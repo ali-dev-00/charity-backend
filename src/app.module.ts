@@ -12,10 +12,10 @@ import { VolunteerModule } from './volunteer-registration/volunteer.module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => {
-        const uri = process.env.MONGODB_URI ?? 'mongodb+srv://mirzaaly8:cT3XaKS3nptL4g9C@cluster0.ygwcfzu.mongodb.net/';
-        // Optionally log URI for debugging in local environment
-        console.log('Connecting to database with URI:', uri); 
-
+        const uri = configService.get<string>('MONGODB_URI');
+        if (!uri) {
+          throw new Error('MONGODB_URI is not defined!');
+        }
         return { uri };
       },
       inject: [ConfigService],
