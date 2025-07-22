@@ -9,7 +9,7 @@ async function bootstrap() {
   const frontendUrl = process.env.FRONTEND_URL || 'https://charity-frontend-two.vercel.app';
   app.enableCors({
     origin: frontendUrl,
-    methods: 'GET,POST,PUT,DELETE',  
+    methods: 'GET,POST,PUT,DELETE,OPTIONS',  
     allowedHeaders: 'Content-Type, Authorization',  
     credentials: true, 
   });
