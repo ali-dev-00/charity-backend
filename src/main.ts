@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+  const frontendUrl = process.env.FRONTEND_URL || 'https://charity-frontend-two.vercel.app';
   app.enableCors({
     origin: frontendUrl,
     methods: 'GET,POST,PUT,DELETE',  
