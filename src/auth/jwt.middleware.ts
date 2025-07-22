@@ -1,5 +1,3 @@
-// src/auth/jwt.middleware.ts
-
 import { Injectable, NestMiddleware, UnauthorizedException } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { JwtService } from '@nestjs/jwt';

@@ -1,4 +1,3 @@
-// src/auth/roles.enum.ts
 export enum UserRole {
   ADMIN = 'admin',
   MANAGER = 'manager',

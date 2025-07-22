@@ -4,7 +4,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { User, UserSchema } from '../schemas/user.schema'; 
-import { AdminRoleGuard } from 'src/auth/admin-role.guard';
+import { AdminRoleGuard } from '../auth/admin-role.guard';
 import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
