@@ -11,9 +11,11 @@ import { VolunteerModule } from './volunteer-registration/volunteer.module';
     ConfigModule.forRoot({ isGlobal: true }), 
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        uri: process.env.MONGODB_URI ?? 'mongodb+srv://mirzaaly8:cT3XaKS3nptL4g9C@cluster0.ygwcfzu.mongodb.net/',
-      }),
+      useFactory: async (configService: ConfigService) => {
+        const uri = process.env.MONGODB_URI ?? 'mongodb+srv://mirzaaly8:cT3XaKS3nptL4g9C@cluster0.ygwcfzu.mongodb.net/';
+        console.log('Connecting to database with URI:', uri); 
+        return { uri };
+      },
       inject: [ConfigService],
     }),
     AuthModule,
