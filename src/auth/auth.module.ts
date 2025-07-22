@@ -13,7 +13,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         secret: process.env.JWT_SECRET || 'charity' ,
-        signOptions: { expiresIn: '60m' },
+        signOptions: { expiresIn: process.env.JWT_EXPIRATION_TIME ?? '7d' },
       }),
     }),
   ],
