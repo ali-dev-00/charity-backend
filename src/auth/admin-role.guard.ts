@@ -38,6 +38,7 @@ export class AdminRoleGuard implements CanActivate {
 
       return true;  
     } catch (error) {
+      console.log('invalid token from admin role guard')
       throw new ForbiddenException('Invalid or expired token');
     }
   }

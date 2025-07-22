@@ -5,7 +5,6 @@ import { CreateUserDto } from '../users/dto/create-user.dto';
 import { LoginDto } from '../users/dto/login.dto';  
 import { ApiTags } from '@nestjs/swagger';
 
-
 @ApiTags('auth')
 @Controller('api')
 export class AuthController {
@@ -19,8 +18,8 @@ export class AuthController {
     // Set the JWT token as an HTTP-only cookie
     res.cookie('jwt', response?.data.access_token, {
       httpOnly: true,  
-      secure: process.env.NODE_ENV === 'production', 
-      maxAge: 24 * 60 * 60 * 1000 * 30,
+      secure: process.env.NODE_ENV === 'production',  // Set 'true' for production
+      maxAge: 24 * 60 * 60 * 1000 * 30,  // Set cookie expiration (30 days)
     });
 
     return res.status(HttpStatus.CREATED).json({
@@ -38,8 +37,8 @@ export class AuthController {
     // Set the JWT token as an HTTP-only cookie
     res.cookie('jwt', response?.data.access_token, {
       httpOnly: true,  
-      secure: process.env.NODE_ENV === 'production', 
-      maxAge: 24 * 60 * 60 * 1000 * 30, 
+      secure: process.env.NODE_ENV === 'production',  // Set 'true' for production
+      maxAge: 24 * 60 * 60 * 1000 * 30,  // Set cookie expiration (30 days)
     });
 
     return res.status(HttpStatus.OK).json({
@@ -57,7 +56,6 @@ export class AuthController {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       expires: new Date(0),  
-      
     });
 
     return res.status(HttpStatus.OK).json({
