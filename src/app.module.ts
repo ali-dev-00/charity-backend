@@ -12,7 +12,7 @@ import { VolunteerModule } from './volunteer-registration/volunteer.module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URI'),
+        uri: process.env.MONGODB_URI ?? 'mongodb+srv://mirzaaly8:cT3XaKS3nptL4g9C@cluster0.ygwcfzu.mongodb.net/',
       }),
       inject: [ConfigService],
     }),
