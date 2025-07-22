@@ -18,9 +18,9 @@ export class AuthController {
 
     // Set the JWT token as an HTTP-only cookie
     res.cookie('jwt', response?.data.access_token, {
-      httpOnly: true,  // Make the cookie HTTP-only for security
-      secure: process.env.NODE_ENV === 'production',  // Only send cookie over HTTPS in production
-      maxAge: 3600000,  // Set expiration (1 hour for this example)
+      httpOnly: true,  
+      secure: process.env.NODE_ENV === 'production', 
+      maxAge: 24 * 60 * 60 * 1000 * 30,
     });
 
     return res.status(HttpStatus.CREATED).json({
@@ -37,9 +37,9 @@ export class AuthController {
 
     // Set the JWT token as an HTTP-only cookie
     res.cookie('jwt', response?.data.access_token, {
-      httpOnly: true,  // Make the cookie HTTP-only for security
-      secure: process.env.NODE_ENV === 'production',  // Only send cookie over HTTPS in production
-      maxAge: 3600000,  // Set expiration (1 hour for this example)
+      httpOnly: true,  
+      secure: process.env.NODE_ENV === 'production', 
+      maxAge: 24 * 60 * 60 * 1000 * 30, 
     });
 
     return res.status(HttpStatus.OK).json({
@@ -56,7 +56,7 @@ export class AuthController {
     res.cookie('jwt', '', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      expires: new Date(0),  // Set expiration to the past to remove the cookie
+      expires: new Date(0),  
     });
 
     return res.status(HttpStatus.OK).json({
